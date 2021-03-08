@@ -1,6 +1,7 @@
 import os
 import yaml
 import numpy as np
+from ikomia import core
 
 
 def load_cwfid_dataset(folder_path):
@@ -31,15 +32,18 @@ def load_cwfid_dataset(folder_path):
         record["width"]=966
         with open(annotation) as file:
             annotation_data= yaml.load(file, Loader=yaml.FullLoader)
-
             for e in annotation_data["annotation"]:
                 polygon_annot = {}
                 polygon_annot["category_id"] = list(data["metadata"]["category_names"].values()).index(e["type"])
                 x = e["points"]["x"]
                 y = e["points"]["y"]
-                points = np.stack([x,y]).T
-                polygon_annot["segmentation_poly"]=[points]
-                record["annotations"].append(polygon_annot)
+                if type(x) == list:
+                    points=np.zeros(2*len(x))
+
+                    points[0::2]=x
+                    points[1::2]=y
+                    polygon_annot["segmentation_poly"]=[points]
+                    #record["annotations"].append(polygon_annot)
 
         data["images"].append(record)
     return data
