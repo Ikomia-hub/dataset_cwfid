@@ -6,8 +6,8 @@ from ikomia import core
 
 def load_cwfid_dataset(folder_path):
     data = {"images": [], "metadata": {}}
-    data["metadata"]["category_colors"]=[(0,0,0),(255,0,0),(0,0,255)]
-    data["metadata"]["category_names"]={0:"soil",1:"weed",2:"crop"}
+    data["metadata"]["category_colors"]=[(0,0,0),(0,255,0),(255,0,0)]
+    data["metadata"]["category_names"]={0:"background",1:"crop",2:"weed"}
 
     annotations=[]
     annotation_masks=[]
@@ -28,8 +28,8 @@ def load_cwfid_dataset(folder_path):
         record["filename"]=img
         record["semantic_seg_masks_file"]=mask
         record["annotations"]=[]
-        record["height"]= 1296
-        record["width"]=966
+        record["height"]= 966
+        record["width"]=1296
         with open(annotation) as file:
             annotation_data= yaml.load(file, Loader=yaml.FullLoader)
             for e in annotation_data["annotation"]:
@@ -43,7 +43,7 @@ def load_cwfid_dataset(folder_path):
                     points[0::2]=x
                     points[1::2]=y
                     polygon_annot["segmentation_poly"]=[points]
-                    #record["annotations"].append(polygon_annot)
+                    record["annotations"].append(polygon_annot)
 
         data["images"].append(record)
     return data
