@@ -43,7 +43,7 @@ class CWFID_DatasetProcess(core.CProtocolTask):
         # Add input/output of the process here
         # Example :  self.addInput(PyDataProcess.CImageProcessIO())
         #           self.addOutput(PyDataProcess.CImageProcessIO())
-        self.addOutput(datasetio.IkDatasetIO(dataprocess.DatasetFormat.OTHER))
+        self.addOutput(datasetio.IkDatasetIO("other"))
         self.addOutput(dataprocess.CDblFeatureIO())
 
         # Create parameters class
@@ -102,7 +102,7 @@ class CWFID_DatasetProcessFactory(dataprocess.CProcessFactory):
         self.info.authors = "Plugin authors"
         # relative path -> as displayed in Ikomia application process tree
         self.info.path = "Plugins/Python"
-        self.info.version = "1.0.0"
+        self.info.version = "1.1.0"
         # self.info.iconPath = "your path to a specific icon"
         self.info.authors = "algorithm author"
         self.info.article = "title of associated research article"
