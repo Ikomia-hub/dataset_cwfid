@@ -101,9 +101,9 @@ class CWFID_DatasetProcessFactory(dataprocess.CProcessFactory):
         self.info.description = "Load CWFID dataset"
         self.info.authors = "Plugin authors"
         # relative path -> as displayed in Ikomia application process tree
-        self.info.path = "Plugins/Python"
+        self.info.path = "Plugins/Python/Dataset"
         self.info.version = "1.1.0"
-        # self.info.iconPath = "your path to a specific icon"
+        self.info.iconPath = "icons/cwfid.png"
         self.info.authors = "algorithm author"
         self.info.article = "title of associated research article"
         self.info.journal = "publication journal"
