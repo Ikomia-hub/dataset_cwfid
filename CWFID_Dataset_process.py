@@ -97,24 +97,27 @@ class CWFID_DatasetProcessFactory(dataprocess.CProcessFactory):
         dataprocess.CProcessFactory.__init__(self)
         # Set process information as string here
         self.info.name = "CWFID_Dataset"
-        self.info.shortDescription = "Load CWFID dataset"
-        self.info.description = "Load CWFID dataset"
-        self.info.authors = "Plugin authors"
+        self.info.shortDescription = "Load Crop/Weed Field Image Dataset (CWFID) for semantic segmentation"
+        self.info.description = "Load Crop/Weed Field Image Dataset (CWFID) for semantic segmentation." \
+                                "This dataset comprises field images, vegetation segmentation masks and " \
+                                "crop/weed plant type annotations. The paper provides details, " \
+                                "e.g. on the field setting, acquisition conditions, image and ground truth data format."
+        self.info.authors = "Sebastian Haug, Jörn Ostermann"
+        self.info.article = "A Crop/Weed Field Image Dataset for the Evaluation of Computer Vision Based Precision " \
+                            "Agriculture Tasks"
+        self.info.journal = "ECCV"
+        self.info.year = 2014
+        # URL of documentation
+        self.info.documentationLink = "https://github.com/cwfid/dataset"
         # relative path -> as displayed in Ikomia application process tree
         self.info.path = "Plugins/Python/Dataset"
         self.info.version = "1.1.0"
         self.info.iconPath = "icons/cwfid.png"
-        self.info.authors = "algorithm author"
-        self.info.article = "title of associated research article"
-        self.info.journal = "publication journal"
-        self.info.year = 2021
         self.info.license = "MIT License"
-        # URL of documentation
-        self.info.documentationLink = ""
         # Code source repository
-        self.info.repository = ""
+        self.info.repository = "https://github.com/Ikomia-dev/CWFID_Dataset"
         # Keywords used for search
-        self.info.keywords = "crop,weed,segmentation"
+        self.info.keywords = "crop,weed,segmentation,dataset,agriculture"
 
     def create(self, param=None):
         # Create process object
