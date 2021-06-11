@@ -10,18 +10,23 @@ def load_cwfid_dataset(folder_path):
     data["metadata"]["category_names"]={0:"background",1:"crop",2:"weed"}
 
     annotations=[]
-    annotation_masks=[]
+    labels=[]
     images=[]
     for root, dirs, files in os.walk(folder_path):
         for file in files:
-            if file.endswith("annotation.png"):
-                annotation_masks.append(os.path.join(root, file))
-            if file.endswith("annotation.yaml"):
-                annotations.append(os.path.join(root, file))
             if file.endswith("image.png"):
                 images.append(os.path.join(root, file))
+
+    for img in images:
+        label = img.replace("images"+os.sep,"annotations"+os.sep)
+        label = label.replace("image.png","annotation.png")
+        annot = label.replace(".png",".yaml")
+        labels.append(label)
+        annotations.append(annot)
+
+
     id=0
-    for img,mask, annotation in zip(images,annotation_masks,annotations):
+    for img,mask, annotation in zip(images,labels,annotations):
         id+=1
         record={}
         record["id"]=id
