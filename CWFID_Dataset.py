@@ -1,6 +1,4 @@
 from ikomia import dataprocess
-import CWFID_Dataset_process as processMod
-import CWFID_Dataset_widget as widgetMod
 
 
 # --------------------
@@ -13,9 +11,11 @@ class CWFID_Dataset(dataprocess.CPluginProcessInterface):
         dataprocess.CPluginProcessInterface.__init__(self)
 
     def getProcessFactory(self):
+        from CWFID_Dataset.CWFID_Dataset_process import CWFID_DatasetProcessFactory
         # Instantiate process object
-        return processMod.CWFID_DatasetProcessFactory()
+        return CWFID_DatasetProcessFactory()
 
     def getWidgetFactory(self):
+        from CWFID_Dataset.CWFID_Dataset_widget import CWFID_DatasetWidgetFactory
         # Instantiate associated widget object
-        return widgetMod.CWFID_DatasetWidgetFactory()
+        return CWFID_DatasetWidgetFactory()

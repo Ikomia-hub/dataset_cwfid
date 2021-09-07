@@ -1,7 +1,7 @@
 from ikomia import utils, core, dataprocess
-import CWFID_Dataset_process as processMod
-
-#PyQt GUI framework
+from ikomia.utils import qtconversion, pyqtutils
+from CWFID_Dataset.CWFID_Dataset_process import CWFID_DatasetParam
+# PyQt GUI framework
 from PyQt5.QtWidgets import *
 
 
@@ -9,24 +9,24 @@ from PyQt5.QtWidgets import *
 # - Class which implements widget associated with the process
 # - Inherits PyCore.CProtocolTaskWidget from Ikomia API
 # --------------------
-class CWFID_DatasetWidget(core.CProtocolTaskWidget):
+class CWFID_DatasetWidget(core.CWorkflowTaskWidget):
 
     def __init__(self, param, parent):
-        core.CProtocolTaskWidget.__init__(self, parent)
+        core.CWorkflowTaskWidget.__init__(self, parent)
 
         if param is None:
-            self.parameters = processMod.CWFID_DatasetParam()
+            self.parameters = CWFID_DatasetParam()
         else:
             self.parameters = param
 
         # Create layout : QGridLayout by default
         self.grid_layout = QGridLayout()
         # PyQt -> Qt wrapping
-        layout_ptr = utils.PyQtToQt(self.grid_layout)
+        layout_ptr = qtconversion.PyQtToQt(self.grid_layout)
 
-        self.browse_img_folder = utils.append_browse_file(self.grid_layout, label="Image folder", filter="",
-                                                         path=self.parameters.image_folder,
-                                                         mode=QFileDialog.Directory)
+        self.browse_img_folder = pyqtutils.append_browse_file(self.grid_layout, label="Image folder", filter="",
+                                                              path=self.parameters.image_folder,
+                                                              mode=QFileDialog.Directory)
 
         # Set widget layout
         self.setLayout(layout_ptr)

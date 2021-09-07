@@ -1,7 +1,6 @@
 import os
 import yaml
 import numpy as np
-from ikomia import core
 
 
 def load_cwfid_dataset(folder_path):

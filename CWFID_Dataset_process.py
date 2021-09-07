@@ -1,50 +1,49 @@
-from ikomia import core, dataprocess
 import copy
+from ikomia import core, dataprocess
 from ikomia.dnn import dataset, datasetio
-from load_cwfid_dataset import load_cwfid_dataset
-# Your imports below
+from CWFID_Dataset.load_cwfid_dataset import load_cwfid_dataset
+
 
 # --------------------
 # - Class to handle the process parameters
 # - Inherits PyCore.CProtocolTaskParam from Ikomia API
 # --------------------
-class CWFID_DatasetParam(core.CProtocolTaskParam):
+class CWFID_DatasetParam(core.CWorkflowTaskParam):
 
     def __init__(self):
-        core.CProtocolTaskParam.__init__(self)
+        core.CWorkflowTaskParam.__init__(self)
         # Place default value initialization here
         # Example : self.windowSize = 25
         self.image_folder = ""
 
-    def setParamMap(self, paramMap):
+    def setParamMap(self, param_map):
         # Set parameters values from Ikomia application
         # Parameters values are stored as string and accessible like a python dict
         # Example : self.windowSize = int(paramMap["windowSize"])
-        self.image_folder = paramMap["image_folder"]
-        pass
+        self.image_folder = param_map["image_folder"]
 
     def getParamMap(self):
         # Send parameters values to Ikomia application
         # Create the specific dict structure (string container)
-        paramMap = core.ParamMap()
+        param_map = core.ParamMap()
         # Example : paramMap["windowSize"] = str(self.windowSize)
-        paramMap["image_folder"]=self.image_folder
-        return paramMap
+        param_map["image_folder"]=self.image_folder
+        return param_map
 
 
 # --------------------
 # - Class which implements the process
 # - Inherits PyCore.CProtocolTask or derived from Ikomia API
 # --------------------
-class CWFID_DatasetProcess(core.CProtocolTask):
+class CWFID_DatasetProcess(core.CWorkflowTask):
 
     def __init__(self, name, param):
-        core.CProtocolTask.__init__(self, name)
+        core.CWorkflowTask.__init__(self, name)
         # Add input/output of the process here
         # Example :  self.addInput(PyDataProcess.CImageProcessIO())
         #           self.addOutput(PyDataProcess.CImageProcessIO())
         self.addOutput(datasetio.IkDatasetIO("other"))
-        self.addOutput(dataprocess.CDblFeatureIO())
+        self.addOutput(dataprocess.CNumericIO())
 
         # Create parameters class
         if param is None:
@@ -91,10 +90,10 @@ class CWFID_DatasetProcess(core.CProtocolTask):
 # - Factory class to build process object
 # - Inherits PyDataProcess.CProcessFactory from Ikomia API
 # --------------------
-class CWFID_DatasetProcessFactory(dataprocess.CProcessFactory):
+class CWFID_DatasetProcessFactory(dataprocess.CTaskFactory):
 
     def __init__(self):
-        dataprocess.CProcessFactory.__init__(self)
+        dataprocess.CTaskFactory.__init__(self)
         # Set process information as string here
         self.info.name = "CWFID_Dataset"
         self.info.shortDescription = "Load Crop/Weed Field Image Dataset (CWFID) for semantic segmentation"
