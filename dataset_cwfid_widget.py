@@ -1,6 +1,6 @@
 from ikomia import utils, core, dataprocess
 from ikomia.utils import qtconversion, pyqtutils
-from CWFID_Dataset.CWFID_Dataset_process import CWFID_DatasetParam
+from dataset_cwfid.dataset_cwfid_process import DatasetCwfidParam
 # PyQt GUI framework
 from PyQt5.QtWidgets import *
 
@@ -9,13 +9,13 @@ from PyQt5.QtWidgets import *
 # - Class which implements widget associated with the process
 # - Inherits PyCore.CProtocolTaskWidget from Ikomia API
 # --------------------
-class CWFID_DatasetWidget(core.CWorkflowTaskWidget):
+class DatasetCwfidWidget(core.CWorkflowTaskWidget):
 
     def __init__(self, param, parent):
         core.CWorkflowTaskWidget.__init__(self, parent)
 
         if param is None:
-            self.parameters = CWFID_DatasetParam()
+            self.parameters = DatasetCwfidParam()
         else:
             self.parameters = param
 
@@ -45,13 +45,13 @@ class CWFID_DatasetWidget(core.CWorkflowTaskWidget):
 # - Factory class to build process widget object
 # - Inherits PyDataProcess.CWidgetFactory from Ikomia API
 # --------------------
-class CWFID_DatasetWidgetFactory(dataprocess.CWidgetFactory):
+class DatasetCwfidWidgetFactory(dataprocess.CWidgetFactory):
 
     def __init__(self):
         dataprocess.CWidgetFactory.__init__(self)
         # Set the name of the process -> it must be the same as the one declared in the process factory class
-        self.name = "CWFID_Dataset"
+        self.name = "dataset_cwfid"
 
     def create(self, param):
         # Create widget object
-        return CWFID_DatasetWidget(param, None)
+        return DatasetCwfidWidget(param, None)

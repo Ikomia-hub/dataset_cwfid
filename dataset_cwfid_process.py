@@ -1,14 +1,14 @@
 import copy
 from ikomia import core, dataprocess
 from ikomia.dnn import dataset, datasetio
-from CWFID_Dataset.load_cwfid_dataset import load_cwfid_dataset
+from dataset_cwfid.load_cwfid_dataset import load_cwfid_dataset
 
 
 # --------------------
 # - Class to handle the process parameters
 # - Inherits PyCore.CProtocolTaskParam from Ikomia API
 # --------------------
-class CWFID_DatasetParam(core.CWorkflowTaskParam):
+class DatasetCwfidParam(core.CWorkflowTaskParam):
 
     def __init__(self):
         core.CWorkflowTaskParam.__init__(self)
@@ -35,7 +35,7 @@ class CWFID_DatasetParam(core.CWorkflowTaskParam):
 # - Class which implements the process
 # - Inherits PyCore.CProtocolTask or derived from Ikomia API
 # --------------------
-class CWFID_DatasetProcess(core.CWorkflowTask):
+class DatasetCwfid(core.CWorkflowTask):
 
     def __init__(self, name, param):
         core.CWorkflowTask.__init__(self, name)
@@ -47,7 +47,7 @@ class CWFID_DatasetProcess(core.CWorkflowTask):
 
         # Create parameters class
         if param is None:
-            self.setParam(CWFID_DatasetParam())
+            self.setParam(DatasetCwfidParam())
         else:
             self.setParam(copy.deepcopy(param))
 
@@ -90,12 +90,12 @@ class CWFID_DatasetProcess(core.CWorkflowTask):
 # - Factory class to build process object
 # - Inherits PyDataProcess.CProcessFactory from Ikomia API
 # --------------------
-class CWFID_DatasetProcessFactory(dataprocess.CTaskFactory):
+class DatasetCwfidFactory(dataprocess.CTaskFactory):
 
     def __init__(self):
         dataprocess.CTaskFactory.__init__(self)
         # Set process information as string here
-        self.info.name = "CWFID_Dataset"
+        self.info.name = "dataset_cwfid"
         self.info.shortDescription = "Load Crop/Weed Field Image Dataset (CWFID) for semantic segmentation"
         self.info.description = "Load Crop/Weed Field Image Dataset (CWFID) for semantic segmentation." \
                                 "This dataset comprises field images, vegetation segmentation masks and " \
@@ -120,4 +120,4 @@ class CWFID_DatasetProcessFactory(dataprocess.CTaskFactory):
 
     def create(self, param=None):
         # Create process object
-        return CWFID_DatasetProcess(self.info.name, param)
+        return DatasetCwfid(self.info.name, param)
