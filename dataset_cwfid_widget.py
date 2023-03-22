@@ -29,16 +29,16 @@ class DatasetCwfidWidget(core.CWorkflowTaskWidget):
                                                               mode=QFileDialog.Directory)
 
         # Set widget layout
-        self.setLayout(layout_ptr)
+        self.set_layout(layout_ptr)
 
-    def onApply(self):
+    def on_apply(self):
         # Apply button clicked slot
 
         # Get parameters from widget
         # Example : self.parameters.windowSize = self.spinWindowSize.value()
         self.parameters.image_folder = self.browse_img_folder.path
         # Send signal to launch the process
-        self.emitApply(self.parameters)
+        self.emit_apply(self.parameters)
 
 
 # --------------------

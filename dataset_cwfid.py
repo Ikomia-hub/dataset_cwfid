@@ -10,12 +10,12 @@ class IkomiaPlugin(dataprocess.CPluginProcessInterface):
     def __init__(self):
         dataprocess.CPluginProcessInterface.__init__(self)
 
-    def getProcessFactory(self):
+    def get_process_factory(self):
         from dataset_cwfid.dataset_cwfid_process import DatasetCwfidFactory
         # Instantiate process object
         return DatasetCwfidFactory()
 
-    def getWidgetFactory(self):
+    def get_widget_factory(self):
         from dataset_cwfid.dataset_cwfid_widget import DatasetCwfidWidgetFactory
         # Instantiate associated widget object
         return DatasetCwfidWidgetFactory()
