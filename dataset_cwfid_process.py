@@ -110,7 +110,7 @@ class DatasetCwfidFactory(dataprocess.CTaskFactory):
         self.info.documentation_link = "https://github.com/cwfid/dataset"
         # relative path -> as displayed in Ikomia application process tree
         self.info.path = "Plugins/Python/Dataset"
-        self.info.version = "1.2.0"
+        self.info.version = "1.2.1"
         self.info.icon_path = "icons/cwfid.png"
         self.info.license = "MIT License"
         # Code source repository
