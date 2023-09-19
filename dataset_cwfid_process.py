@@ -97,10 +97,6 @@ class DatasetCwfidFactory(dataprocess.CTaskFactory):
         # Set process information as string here
         self.info.name = "dataset_cwfid"
         self.info.short_description = "Load Crop/Weed Field Image Dataset (CWFID) for semantic segmentation"
-        self.info.description = "Load Crop/Weed Field Image Dataset (CWFID) for semantic segmentation." \
-                                "This dataset comprises field images, vegetation segmentation masks and " \
-                                "crop/weed plant type annotations. The paper provides details, " \
-                                "e.g. on the field setting, acquisition conditions, image and ground truth data format."
         self.info.authors = "Sebastian Haug, Jörn Ostermann"
         self.info.article = "A Crop/Weed Field Image Dataset for the Evaluation of Computer Vision Based Precision " \
                             "Agriculture Tasks"
