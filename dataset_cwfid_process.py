@@ -110,7 +110,8 @@ class DatasetCwfidFactory(dataprocess.CTaskFactory):
         self.info.icon_path = "icons/cwfid.png"
         self.info.license = "MIT License"
         # Code source repository
-        self.info.repository = "https://github.com/Ikomia-dev/CWFID_Dataset"
+        self.info.repository = "https://github.com/Ikomia-hub/dataset_cwfid"
+        self.info.original_repository = "https://github.com/cwfid/dataset"
         # Keywords used for search
         self.info.keywords = "crop,weed,segmentation,dataset,agriculture"
 
