@@ -25,7 +25,7 @@ In Ikomia Studio, once dataset is loaded, all images can be visualized with thei
 
 The CWFID dataset comprises field images, vegetation segmentation masks and crop/weed plant type annotations.
 
-![Image example](https://raw.githubusercontent.com/Ikomia-hub/dataset_cwfid/feat/new_readme/icons/example.jpg)
+![Image example](https://raw.githubusercontent.com/Ikomia-hub/dataset_cwfid/main/icons/example.jpg)
 
 ## :rocket: Use with Ikomia API
 
