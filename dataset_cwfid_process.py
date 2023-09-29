@@ -114,6 +114,8 @@ class DatasetCwfidFactory(dataprocess.CTaskFactory):
         self.info.original_repository = "https://github.com/cwfid/dataset"
         # Keywords used for search
         self.info.keywords = "crop,weed,segmentation,dataset,agriculture"
+        self.info.algo_type = core.AlgoType.DATASET
+        self.info.algo_tasks = "SEMANTIC_SEGMENTATION"
 
     def create(self, param=None):
         # Create process object
